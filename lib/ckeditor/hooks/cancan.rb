@@ -36,7 +36,8 @@ module Ckeditor
         def current_ability
           # use ckeditor_current_user instead of default current_user so it works with
           # whatever current user method is defined with Ckeditor
-          @current_ability ||= @ability.new(ckeditor_current_user)
+          session = request.session_options
+          @current_ability ||= @ability.new(ckeditor_current_user, session)
         end
       end
     end
